@@ -1,0 +1,198 @@
+VisualElement {
+}
+
+.topbar {
+    flex-grow: 1;
+    background-color: rgb(64, 64, 64);
+    height: 50px;
+    justify-content: center;
+}
+
+.main {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    flex-direction: row;
+    height: 100%;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: rgb(38, 38, 38);
+    width: 100%;
+}
+
+.display {
+    flex-grow: 1;
+    height: 50%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgb(64, 64, 64);
+    border-right-color: rgb(64, 64, 64);
+    border-top-color: rgb(64, 64, 64);
+    border-bottom-color: rgb(64, 64, 64);
+}
+
+.tools {
+    flex-grow: 1;
+    background-color: rgb(64, 64, 64);
+    width: 300px;
+}
+
+.playhead {
+    flex-grow: 1;
+    background-color: rgb(255, 0, 137);
+    height: 100%;
+    width: 2px;
+    align-self: center;
+    position: absolute;
+}
+
+.vertical-line {
+    background-color: rgb(33, 33, 33);
+    height: 100%;
+    width: 2px;
+}
+
+.space {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    height: auto;
+}
+
+.vertical-grid {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.horizontal-grid {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+}
+
+.horizontal-line {
+    height: 2px;
+    width: 100%;
+    background-color: rgb(33, 33, 33);
+}
+
+.haptic-point {
+    background-color: rgb(131, 0, 255);
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.root {
+    flex-grow: 1;
+    background-color: rgb(0, 0, 0);
+    flex-direction: column;
+}
+
+.filepath {
+    color: rgb(201, 201, 201);
+    font-size: 12px;
+}
+
+.funscript {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.waveform {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0);
+    height: 50%;
+    background-image: url('project://database/Packages/com.unity.entities/Editor%20Default%20Resources/icons/light/Archetype/Archetype@2x.png?fileID=2800000&guid=168d11da975c3cf4e9a2ee3580066aaf&type=3#Archetype@2x');
+    border-top-color: rgb(64, 64, 64);
+    border-top-width: 4px;
+    justify-content: center;
+}
+
+.waveform Label {
+    color: rgb(204, 204, 204);
+    right: 10px;
+    position: absolute;
+    bottom: 5px;
+    -unity-text-align: upper-right;
+}
+
+.waveform Slider {
+    justify-content: center;
+    width: 90%;
+    align-self: center;
+}
+
+.topbar Label {
+    font-size: 14px;
+    color: rgb(204, 204, 204);
+    -unity-font-style: bold;
+    left: 10px;
+    -unity-text-align: middle-left;
+}
+
+.mouseline {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 2px;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: flex-end;
+    align-self: center;
+    transform-origin: top;
+}
+
+.pointsettings {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.pointsettings Label {
+    color: rgb(204, 204, 204);
+}
+
+.metadata {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    height: 60%;
+}
+
+.metadata Label {
+    color: rgb(204, 204, 204);
+    width: auto;
+    min-width: 20%;
+}
+
+.loadingscreen {
+    flex-grow: 1;
+    background-color: rgb(38, 38, 38);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.loadingscreen-instructions {
+    color: rgb(204, 204, 204);
+    font-size: 24px;
+    width: 80%;
+    -unity-text-align: upper-center;
+}

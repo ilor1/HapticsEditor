@@ -1,0 +1,79 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/HapticUI.uss?fileID=7433441132597879392&amp;guid=6a674e0ff92f2b844828e5380c924003&amp;type=3#HapticUI" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="topbar" class="topbar">
+            <ui:Label tabindex="-1" text="_filepath" display-tooltip-when-elided="true" name="filepath" class="filepath" />
+        </ui:VisualElement>
+        <ui:VisualElement name="main" class="main">
+            <ui:VisualElement name="content" class="content">
+                <ui:VisualElement name="horizontal-grid" picking-mode="Ignore" class="horizontal-grid">
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                    <ui:VisualElement name="line" class="horizontal-line" />
+                </ui:VisualElement>
+                <ui:VisualElement name="vertical-grid" picking-mode="Ignore" class="vertical-grid" style="left: 0;" />
+                <ui:VisualElement name="display" class="display">
+                    <ui:VisualElement name="funscript" class="funscript" />
+                    <ui:VisualElement name="patternstamp" picking-mode="Ignore" class="funscript" />
+                </ui:VisualElement>
+                <ui:VisualElement name="waveform" class="waveform">
+                    <ui:Label tabindex="-1" text="00:00:00/00:00:00" display-tooltip-when-elided="true" name="timedisplay" />
+                    <ui:Slider picking-mode="Ignore" value="42" high-value="100" name="timeslider" />
+                </ui:VisualElement>
+                <ui:VisualElement name="playhead" picking-mode="Ignore" class="playhead" />
+                <ui:VisualElement name="mouseline" picking-mode="Ignore" class="mouseline" style="position: absolute;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="tools" class="tools">
+                <ui:VisualElement name="pointsettings" class="pointsettings">
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="mode" />
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="snapping" />
+                </ui:VisualElement>
+                <ui:VisualElement name="patternsettings" class="pointsettings">
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="scale" />
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="repeat" />
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="spacing" />
+                </ui:VisualElement>
+                <ui:VisualElement name="metadata" class="metadata">
+                    <ui:ScrollView>
+                        <ui:Toggle label="inverted" name="inverted" />
+                        <ui:TextField picking-mode="Ignore" label="creator" name="creator" />
+                        <ui:TextField picking-mode="Ignore" label="description" name="description" />
+                        <ui:TextField picking-mode="Ignore" label="duration" name="duration" />
+                        <ui:TextField picking-mode="Ignore" label="license" name="license" />
+                        <ui:TextField picking-mode="Ignore" label="notes" name="notes" />
+                        <ui:TextField picking-mode="Ignore" label="performers" name="performers" />
+                        <ui:TextField picking-mode="Ignore" label="script_url" name="script_url" />
+                        <ui:TextField picking-mode="Ignore" label="tags" name="tags" />
+                        <ui:TextField picking-mode="Ignore" label="title" name="title" />
+                        <ui:TextField picking-mode="Ignore" label="type" name="type" value="basic" />
+                        <ui:TextField picking-mode="Ignore" label="video_url" name="video_url" />
+                        <ui:TextField picking-mode="Ignore" label="range" name="range" value="100" />
+                        <ui:TextField picking-mode="Ignore" label="version" name="version" value="1.0" />
+                    </ui:ScrollView>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="loader" class="loadingscreen">
+            <ui:Label tabindex="-1" text="Drag and drop .mp3 to load" display-tooltip-when-elided="true" name="label" class="loadingscreen-instructions" />
+            <ui:ProgressBar value="22" title="Loading audio" name="progressbar" style="width: 80%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
