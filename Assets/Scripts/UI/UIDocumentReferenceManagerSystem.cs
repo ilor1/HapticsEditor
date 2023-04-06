@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
@@ -7,11 +8,25 @@ using V2;
 
 public class UIDocumentReferenceManagerSystem : MonoBehaviour
 {
+    public static UIDocumentReferenceManagerSystem Instance;
+
+    private UIDocument _doc;
+    private List<VisualElement> _visualElements = new List<VisualElement>();
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else if (Instance != this)
+        {
+            Destroy(this);
+        }
+    }
+
     async void Start()
     {
-        var doc = GetComponent<UIDocument>();
+        _doc = GetComponent<UIDocument>();
 
-        while (doc.rootVisualElement == null)
+        while (_doc.rootVisualElement == null)
         {
             await Task.Delay(1000);
         }
@@ -19,12 +34,11 @@ public class UIDocumentReferenceManagerSystem : MonoBehaviour
         var em = World.DefaultGameObjectInjectionWorld.EntityManager;
         Entity entity = em.CreateEntity();
 
-
         em.AddComponent<UIDocumentProcessed>(entity);
 
         // Create VisualElementReferences
-        var visualElements = doc.rootVisualElement.Query<VisualElement>().ToList();
-        foreach (var element in visualElements)
+        _visualElements = _doc.rootVisualElement.Query<VisualElement>().ToList();
+        foreach (var element in _visualElements)
         {
             Entity visualElementEntity = em.CreateEntity();
             em.AddComponentData(visualElementEntity, new VisualElementRef
@@ -33,6 +47,20 @@ public class UIDocumentReferenceManagerSystem : MonoBehaviour
             });
             AddVisualElementTag(em, visualElementEntity, element);
         }
+    }
+
+    public static bool TryGetVisualElementByName(string name, out VisualElement visualElement)
+    {
+        visualElement = null;
+        foreach (var element in Instance._visualElements)
+        {
+            if (element.name == name)
+            {
+                visualElement = element;
+                return true;
+            }
+        }
+        return false;
     }
 
     // Add Specific tag components

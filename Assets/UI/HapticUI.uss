@@ -8,6 +8,16 @@ VisualElement {
     justify-content: flex-start;
     flex-direction: row;
     width: 100%;
+    -unity-text-align: middle-left;
+    align-items: center;
+}
+
+.topbar Label {
+    font-size: 14px;
+    color: rgb(204, 204, 204);
+    -unity-font-style: bold;
+    left: 10px;
+    -unity-text-align: middle-left;
 }
 
 .main {
@@ -105,14 +115,6 @@ VisualElement {
     flex-direction: column;
 }
 
-.filepath {
-    color: rgb(201, 201, 201);
-    font-size: 12px;
-    align-items: flex-start;
-    width: 95%;
-    max-width: 100%;
-}
-
 .funscript {
     height: 100%;
     width: 100%;
@@ -141,14 +143,6 @@ VisualElement {
     justify-content: center;
     width: 90%;
     align-self: center;
-}
-
-.topbar Label {
-    font-size: 14px;
-    color: rgb(204, 204, 204);
-    -unity-font-style: bold;
-    left: 10px;
-    -unity-text-align: middle-left;
 }
 
 .mouseline {
@@ -202,16 +196,9 @@ VisualElement {
     -unity-text-align: upper-center;
 }
 
-.bluetooth {
-    flex-grow: 1;
-    background-color: rgba(0, 0, 0, 0);
-    background-image: url('project://database/Assets/UI/Bluetooth.png?fileID=2800000&guid=e604f0235ddba184eb6b890027c3840b&type=3#Bluetooth');
-    align-items: center;
-    width: auto;
-    height: auto;
-    max-width: 20px;
-    max-height: 50%;
-    justify-content: center;
-    align-self: auto;
-    padding-right: 0;
+.tooltip {
+    background-color: rgb(153, 153, 153);
+    color: rgb(26, 26, 26);
+    visibility: hidden;
+    position: absolute;
 }

@@ -3,7 +3,6 @@
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="topbar" class="topbar">
             <ui:Label tabindex="-1" text="_filepath" display-tooltip-when-elided="true" name="filepath" class="filepath" />
-            <ui:VisualElement name="bluetooth" class="bluetooth" />
         </ui:VisualElement>
         <ui:VisualElement name="main" class="main">
             <ui:VisualElement name="content" class="content">
@@ -76,5 +75,8 @@
             <ui:Label tabindex="-1" text="Drag and drop .mp3 to load" display-tooltip-when-elided="true" name="label" class="loadingscreen-instructions" />
             <ui:ProgressBar value="22" title="Loading audio" name="progressbar" style="width: 80%;" />
         </ui:VisualElement>
+        <ui:VisualElement name="bt-icon" tooltip="0 devices connected" class="bluetooth" style="position: absolute; top: 5px; right: 5px; width: 26px; height: 40px; background-image: url(&apos;project://database/Assets/UI/Bluetooth.png?fileID=2800000&amp;guid=e604f0235ddba184eb6b890027c3840b&amp;type=3#Bluetooth&apos;); display: none;" />
+        <ui:Label tabindex="-1" text="Haptics Editor v1.0.1a" display-tooltip-when-elided="true" name="versionDisplay" style="position: absolute; bottom: 5px; left: 5px; color: rgb(204, 204, 204); font-size: 10px;" />
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="tooltip" picking-mode="Ignore" class="tooltip" />
     </ui:VisualElement>
 </ui:UXML>

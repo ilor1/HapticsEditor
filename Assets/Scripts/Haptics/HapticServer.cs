@@ -6,9 +6,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Buttplug;
 using ButtplugUnity;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class HapticServer : MonoBehaviour
@@ -24,6 +26,10 @@ public class HapticServer : MonoBehaviour
 
     private ButtplugUnityClient _client;
     private float _timeSinceLastUpdate = 0.2f;
+
+    private VisualElement _bluetoothIcon;
+    [SerializeField] private Texture2D _bluetoothConnectedSprite;
+    [SerializeField] private Texture2D _bluetoothDisconnectedSprite;
 
     private void Awake()
     {
@@ -114,6 +120,7 @@ public class HapticServer : MonoBehaviour
             {
                 device.SendVibrateCmd(_intensity);
             }
+
             _timeSinceLastUpdate = 0;
         }
     }
@@ -122,12 +129,16 @@ public class HapticServer : MonoBehaviour
     {
         Log($"Device {e.Device.Name} Connected!");
         Devices.Add(e.Device);
+
+        ToggleBluetoothIcon(Devices.Count > 0);
     }
 
     private void RemoveDevice(object sender, DeviceRemovedEventArgs e)
     {
         Log($"Device {e.Device.Name} Removed!");
         Devices.Remove(e.Device);
+
+        ToggleBluetoothIcon(Devices.Count > 0);
     }
 
     private void ScanFinished(object sender, EventArgs e)
@@ -138,5 +149,21 @@ public class HapticServer : MonoBehaviour
     private void Log(object text)
     {
         Debug.Log("<color=red>Buttplug:</color> " + text, this);
+    }
+
+    private void ToggleBluetoothIcon(bool value)
+    {
+        if (_bluetoothIcon == null)  UIDocumentReferenceManagerSystem.TryGetVisualElementByName("bt-icon", out _bluetoothIcon);
+
+        if (value)
+        {
+            _bluetoothIcon.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            _bluetoothIcon.style.display = DisplayStyle.None;
+        }
+
+        _bluetoothIcon.tooltip = Devices.Count + " connected toys.";
     }
 }
