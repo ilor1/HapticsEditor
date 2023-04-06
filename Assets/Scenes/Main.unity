@@ -242,6 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b6e0ae9ed5d7443a9c966e31f73137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartTime: 0
+  EndTime: 0
   MillisecondsToMove: 0
 --- !u!4 &274161404
 Transform:
@@ -676,7 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad125b8a3bec447489687fa6d22a1288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioFilePath: C:\Users\Miikka\Downloads\ASMR My Sybian_anal.mp3
+  _audioFilePath: E:\_Projects\Haptics\Clench for me my Good Girl.mp3
   _uiDocument: {fileID: 623449936}
 --- !u!4 &1961237552
 Transform:

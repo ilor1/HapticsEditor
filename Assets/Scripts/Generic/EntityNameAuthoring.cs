@@ -15,7 +15,9 @@ namespace V2
     {
         public override void Bake(EntityNameAuthoring authoring)
         {
-            AddComponent(new EntityName
+            var entity = GetEntity(TransformUsageFlags.None);
+            
+            AddComponent(entity, new EntityName
             {
                 // Apply GameObject name to the entity
                 Value = new FixedString64Bytes(authoring.name)

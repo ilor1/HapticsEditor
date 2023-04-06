@@ -46,6 +46,10 @@ namespace V2
 
             _progressBar = _loader.Q("progressbar") as ProgressBar;
             _progressBar.style.display = DisplayStyle.None;
+
+#if UNITY_EDITOR
+            LoadEditorAudio();
+#endif
         }
 
         [ContextMenu("Load audio")]

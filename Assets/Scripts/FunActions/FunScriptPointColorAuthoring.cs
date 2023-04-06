@@ -7,22 +7,25 @@ namespace V2
     {
         public Color Value;
     }
-    
+
     public class FunScriptPointColorBaker : Baker<FunScriptPointColorAuthoring>
     {
         public override void Bake(FunScriptPointColorAuthoring authoring)
         {
-            AddComponent(new FunScriptPointColor
+            var entity = GetEntity(TransformUsageFlags.None);
+
+            AddComponent(entity, new FunScriptPointColor
             {
                 Value = authoring.Value
             });
         }
     }
+
     public struct FunScriptPointColor : IComponentData
     {
         public Color Value;
     }
-    
+
     public struct PatternPointColor : IComponentData
     {
         public Color Value;

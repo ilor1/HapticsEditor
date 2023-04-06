@@ -12,7 +12,8 @@ namespace V2
     {
         public override void Bake(FunScriptLineColorAuthoring authoring)
         {
-            AddComponent(new FunScriptLineColor
+            var entity = GetEntity(TransformUsageFlags.None);
+            AddComponent(entity, new FunScriptLineColor
             {
                 Value = authoring.Value
             });

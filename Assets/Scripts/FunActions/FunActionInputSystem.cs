@@ -340,7 +340,12 @@ namespace V2
         private void AddPoint(ClickEvent evt, EntityManager manager)
         {
             GetAtAndPos(evt.localPosition, evt.target as VisualElement, SystemAPI.GetSingleton<AudioPlaybackTime>(), out int at, out int pos);
-            if (at <= 0) return;
+            if (at <= 2)
+            {
+                // TODO: Remove existing points at 0?
+                CreateFunActionEntity(manager, 0, pos);
+                return;
+            }
 
             var pointMode = SystemAPI.GetSingleton<FunScriptPointModeSettings>();
 
@@ -350,12 +355,16 @@ namespace V2
                 var funActions = _funActionQuery.ToComponentDataArray<FunAction>(Allocator.Temp);
                 funActions.Sort(new FunActionSorter());
 
+                bool foundNextAt = false;
+
                 for (int i = 0; i < funActions.Length; i++)
                 {
-                    // add point
+                    // Found next at
+                    // add an extra point before current "at" that matches the previous point's "pos"
                     if (funActions[i].at > at && i > 0)
                     {
                         CreateFunActionEntity(manager, at - 2, funActions[i - 1].pos);
+                        foundNextAt = true;
                         break;
                     }
 
@@ -364,6 +373,13 @@ namespace V2
                     {
                         break;
                     }
+                }
+
+                // No next at exists
+                // add an extra point before current "at" that matches the previous point's "pos"
+                if (!foundNextAt && funActions.Length > 0)
+                {
+                    CreateFunActionEntity(manager, at - 2, funActions[^1].pos);
                 }
 
                 funActions.Dispose();
@@ -380,6 +396,20 @@ namespace V2
 
         private void CreateFunActionEntity(EntityManager manager, int at, int pos)
         {
+            // Clear existing point if there is one at the "at"
+            var funActions = _funActionQuery.ToComponentDataArray<FunAction>(Allocator.Temp);
+            var funActionEntities = _funActionQuery.ToEntityArray(Allocator.Temp);
+
+            for (int i = 0; i < funActions.Length; i++)
+            {
+                if (funActions[i].at == at)
+                {
+                    manager.DestroyEntity(funActionEntities[i]);
+                    break;
+                }
+            }
+
+            // Create new point
             var entity = manager.CreateEntity();
 #if UNITY_EDITOR
             manager.AddComponentData(entity, new EntityName

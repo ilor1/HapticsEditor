@@ -50,7 +50,7 @@ namespace V2
                     Debug.LogWarning($"'{funScriptPath}' did not exist. New one created");
                     json = new FunScriptJson
                     {
-                        actions = new FunAction[] { },
+                        actions = new FunAction[] { new FunAction { at = 0, pos = 0 } },
                         inverted = false,
                         metadata = new Metadata
                         {

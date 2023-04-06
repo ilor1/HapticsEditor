@@ -3,6 +3,7 @@
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="topbar" class="topbar">
             <ui:Label tabindex="-1" text="_filepath" display-tooltip-when-elided="true" name="filepath" class="filepath" />
+            <ui:VisualElement name="bluetooth" class="bluetooth" />
         </ui:VisualElement>
         <ui:VisualElement name="main" class="main">
             <ui:VisualElement name="content" class="content">

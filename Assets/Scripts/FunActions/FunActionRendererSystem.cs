@@ -83,7 +83,7 @@ namespace V2
                 }
             }
 
-            // Draw line till the end even if there's no action
+            // Draw line till the end even if there's no action at the end
             float width = mgc.visualElement.contentRect.width;
             if (_positions.Length > 0 && _positions[_positions.Length - 1].x < width)
             {
