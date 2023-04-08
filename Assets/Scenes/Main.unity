@@ -771,7 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad125b8a3bec447489687fa6d22a1288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioFilePath: E:\_Projects\Haptics\Clench for me my Good Girl.mp3
+  _audioFilePath: E:\_Projects\Haptics\ExampleAudioFile.mp3
   _uiDocument: {fileID: 623449936}
 --- !u!4 &1961237552
 Transform:
@@ -802,7 +802,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

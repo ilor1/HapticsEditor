@@ -7,8 +7,6 @@ This tool is currently in a pre-alpha state.
 - Only Windows OS
 - Only mp3 files are supported. 
 - Some longer files (hour+) might cause a crash. This might depend on available system memory.
-- Looping files doesn't work.
-
 
 **General:**
 - Saving: Ctrl + S (there is no autosave, you have been warned!)
@@ -53,6 +51,7 @@ This tool is currently in a pre-alpha state.
 **Features:**
 - Allows live editing of haptics (uses Buttplug.io plugin to connect to bluetooth toys)
 - Multiple toys connected simultaneously
+- Separate waveforms for Left and Right channels (great for ASMR audios)
 - Linear-mode: default point creation.
 - Step-mode: creates a "step", by adding an extra point with the previous intensity value.
 - Patterns and Custom patterns
