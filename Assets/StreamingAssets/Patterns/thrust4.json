@@ -1,0 +1,21 @@
+{
+  "name": "Thrust4 (fast in, fast out)",
+  "actions": [
+    {
+      "at": 0,
+      "pos": 0
+    },
+    {
+      "at": 200,
+      "pos": 100
+    },
+    {
+      "at": 800,
+      "pos": 100
+    },
+    {
+      "at": 1000,
+      "pos": 0
+    }
+  ]
+}

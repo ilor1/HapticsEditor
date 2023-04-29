@@ -30,7 +30,8 @@ public class PatternCreator : MonoBehaviour
         for (int t = 0; t < lengthInMilliseconds; t++)
         {
             float value = curve.Evaluate(t * 0.001f) * 100f;
-            int pos = Mathf.RoundToInt(value / 5f) * 5;
+            //int pos = Mathf.RoundToInt(value / 5f) * 5;
+            int pos = Mathf.RoundToInt(value);
             pos = Mathf.Clamp(pos, 0, 100);
 
             // Add value at start

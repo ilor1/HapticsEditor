@@ -112,13 +112,13 @@ namespace V2
                     fixedCount++;
                 }
 
-                // round to increments of 5
-                if (funAction.pos % 5 != 0)
-                {
-                    float v = (float)funAction.pos / 5f;
-                    funAction.pos = Mathf.RoundToInt(v) * 5;
-                    fixedCount++;
-                }
+                // // round to increments of 5
+                // if (funAction.pos % 5 != 0)
+                // {
+                //     float v = (float)funAction.pos / 5f;
+                //     funAction.pos = Mathf.RoundToInt(v) * 5;
+                //     fixedCount++;
+                // }
 
                 funActionsList[i] = funAction;
             }

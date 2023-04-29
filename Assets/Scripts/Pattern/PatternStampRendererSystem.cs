@@ -94,7 +94,8 @@ namespace V2
                             var action = pattern.actions[j];
                             int at = mouseAt + length * i + (int)math.round(action.at * patternSettings.Scale.x);
                             int pos = (int)math.round(action.pos * patternSettings.Scale.y);
-                            pos = (int)(math.round(mousePos / 5f) * 5f + math.round(pos / 5f) * 5f);
+                            //pos = (int)(math.round(mousePos / 5f) * 5f + math.round(pos / 5f) * 5f);
+                            pos = (int)(math.round(mousePos / 5f) * 5f + math.round(pos));
 
                             pos = math.min(pos, 100);
                             pos = math.max(pos, 0);
