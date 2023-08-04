@@ -8,7 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Buttplug;
-using ButtplugUnity;
+using Buttplug.Client;
+using Buttplug.Client.Connectors.WebsocketConnector;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -24,7 +25,7 @@ public class HapticServer : MonoBehaviour
     [Tooltip("Haptics intensity (after scaling)"), SerializeField]
     private float _intensity = 0;
 
-    private ButtplugUnityClient _client;
+    private ButtplugClient _client;
     private float _timeSinceLastUpdate = 0.2f;
 
     private VisualElement _bluetoothIcon;
@@ -39,7 +40,7 @@ public class HapticServer : MonoBehaviour
 
     private async void Start()
     {
-        _client = new ButtplugUnityClient("Test Client");
+        _client = new ButtplugClient("Test Client");
         Log("Trying to create client");
 
         // Set up client event handlers before we connect.
@@ -47,21 +48,11 @@ public class HapticServer : MonoBehaviour
         _client.DeviceRemoved += RemoveDevice;
         _client.ScanningFinished += ScanFinished;
 
-        // Try to create the client.
-        try
-        {
-            await ButtplugUnityHelper.StartProcessAndCreateClient(_client, new ButtplugUnityOptions
-            {
-                // Since this is an example, we'll have the unity class output everything its doing to the logs.
-                OutputDebugMessages = false,
-            });
-        }
-        catch (ApplicationException e)
-        {
-            Log("Got an error while starting client");
-            Log(e);
-            return;
-        }
+        // Creating a Websocket Connector is as easy as using the right
+        // options object.
+        var connector = new ButtplugWebsocketConnector(
+            new Uri("ws://localhost:12345/buttplug"));
+        await _client.ConnectAsync(connector);
 
         await _client.StartScanningAsync();
     }
@@ -82,7 +73,6 @@ public class HapticServer : MonoBehaviour
             _client = null;
         }
 
-        ButtplugUnityHelper.StopServer();
         Log("I am destroyed now");
     }
 
@@ -118,7 +108,7 @@ public class HapticServer : MonoBehaviour
         {
             foreach (ButtplugClientDevice device in Devices)
             {
-                device.SendVibrateCmd(_intensity);
+                device.VibrateAsync(_intensity);
             }
 
             _timeSinceLastUpdate = 0;
