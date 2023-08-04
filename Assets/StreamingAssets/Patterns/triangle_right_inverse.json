@@ -1,20 +1,20 @@
 {
-  "name": "Thrust4 (fast in, fast out)",
+  "name": "Triangle Right Inverse",
   "actions": [
     {
       "at": 0,
       "pos": 0
     },
     {
-      "at": 200,
+      "at": 1,
       "pos": 100
     },
     {
-      "at": 800,
+      "at": 50,
       "pos": 100
     },
     {
-      "at": 1000,
+      "at": 100,
       "pos": 0
     }
   ]

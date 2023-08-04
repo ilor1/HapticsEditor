@@ -1,18 +1,14 @@
 {
-  "name": "Thrust3 (fast in, slow out)",
+  "name": "Triangle Center",
   "actions": [
     {
       "at": 0,
       "pos": 0
-    },
+    },   
     {
-      "at": 200,
+      "at": 500,
       "pos": 100
-    },
-    {
-      "at": 400,
-      "pos": 100
-    },
+    },    
     {
       "at": 1000,
       "pos": 0
