@@ -70,7 +70,7 @@ public class HapticServer : MonoBehaviour
             _client.ScanningFinished -= ScanFinished;
             await _client.DisconnectAsync();
             _client.Dispose();
-            _client = null;
+            //_client = null;
         }
 
         Log("I am destroyed now");

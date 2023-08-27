@@ -29,7 +29,11 @@ namespace V2
         }
 
         [BurstCompile]
-        public void OnDestroy(ref SystemState state) { }
+        public void OnDestroy(ref SystemState state)
+        {
+            _funCoords.Dispose();
+            _activeFunActions.Dispose();
+        }
 
         public void OnUpdate(ref SystemState state)
         {

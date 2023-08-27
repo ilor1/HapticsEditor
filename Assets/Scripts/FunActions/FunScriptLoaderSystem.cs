@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -10,16 +11,15 @@ namespace V2
     /// Loads .funscript file and creates one FunAction entity for each action inside it.
     /// TODO: load and set metadata 
     /// </summary>
-    [RequireMatchingQueriesForUpdate]
+    [BurstCompile, RequireMatchingQueriesForUpdate]
     public partial class FunScriptLoaderSystem : SystemBase
     {
         private EntityQuery _funactionQuery;
 
+        [BurstCompile]
         protected override void OnCreate()
         {
-            base.OnCreate();
             RequireForUpdate<AudioPlaybackTime>();
-
             _funactionQuery = GetEntityQuery(ComponentType.ReadOnly<FunAction>());
         }
 
@@ -83,7 +83,7 @@ namespace V2
         private void CreateFunActions(ref EntityCommandBuffer ecb, FunAction[] funActions)
         {
             // remove existing FunActions
-            ecb.DestroyEntity(_funactionQuery);
+            ecb.DestroyEntity(_funactionQuery, EntityQueryCaptureMode.AtRecord);
 
             // create new ones
             for (int i = 0; i < funActions.Length; i++)

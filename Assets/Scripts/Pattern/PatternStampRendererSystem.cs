@@ -17,7 +17,6 @@ namespace V2
 
         protected override void OnCreate()
         {
-            base.OnCreate();
             _positions = new NativeList<float2>(1000, Allocator.Persistent);
 
             RequireForUpdate<AudioPlaybackTime>();
@@ -40,6 +39,11 @@ namespace V2
                 Value = new FixedString64Bytes("PatternColorSettings")
             });
 #endif
+        }
+
+        protected override void OnDestroy()
+        {
+            _positions.Dispose();
         }
 
         protected override void OnUpdate()

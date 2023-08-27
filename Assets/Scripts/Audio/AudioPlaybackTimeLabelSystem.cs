@@ -1,11 +1,19 @@
 ﻿using System;
+using Unity.Burst;
 using Unity.Entities;
 using UnityEngine.UIElements;
 
 namespace V2
 {
+    [BurstCompile]
     public partial class AudioPlaybackTimeLabelSystem : SystemBase
     {
+        [BurstCompile]
+        protected override void OnCreate()
+        {
+            RequireForUpdate<AudioPlaybackTime>();
+        }
+
         protected override void OnUpdate()
         {
             if (SystemAPI.HasSingleton<AudioPlaybackTime>())
