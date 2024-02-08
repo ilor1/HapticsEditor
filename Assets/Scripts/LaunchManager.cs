@@ -19,15 +19,10 @@ namespace V2
     {
         public static LaunchManager Instance;
 
-        [SerializeField] private string _audioFilePath;
         [SerializeField] private UIDocument _uiDocument;
 
         private AudioSource _audioSource;
         private Entity _audioEntity = Entity.Null;
-
-        private VisualElement _loader;
-        private Label _label;
-        private ProgressBar _progressBar;
 
         private void Awake()
         {
@@ -35,27 +30,6 @@ namespace V2
             else Destroy(gameObject);
 
             _audioSource = GetComponent<AudioSource>();
-        }
-
-        private void Start()
-        {
-            // Get VisualElements
-            _loader = _uiDocument.rootVisualElement.Q("loader");
-            _loader.style.display = DisplayStyle.Flex;
-            _label = _loader.Q("label") as Label;
-
-            _progressBar = _loader.Q("progressbar") as ProgressBar;
-            _progressBar.style.display = DisplayStyle.None;
-
-#if UNITY_EDITOR
-            LoadEditorAudio();
-#endif
-        }
-
-        [ContextMenu("Load audio")]
-        public void LoadEditorAudio()
-        {
-            LoadAudio(_audioFilePath);
         }
 
         public void LoadAudio(string path)
@@ -66,9 +40,6 @@ namespace V2
 
         private IEnumerator GetAudioClip(string fullPath, EntityManager manager)
         {
-            _label.style.display = DisplayStyle.None;
-            _progressBar.style.display = DisplayStyle.Flex;
-
             Debug.Log($"Loading audio clip {fullPath}");
 
             AudioType audioType = AudioType.UNKNOWN;
@@ -106,7 +77,9 @@ namespace V2
                 while (!webRequest.isDone)
                 {
                     Debug.Log($"loading{webRequest.downloadProgress}");
-                    _progressBar.value = webRequest.downloadProgress;
+                    
+                    // TODO: create a progress bar that updates properly.
+                    
                     yield return null;
                 }
 
@@ -124,8 +97,6 @@ namespace V2
                 manager.AddComponentData(_audioEntity, new AudioSourceRef { Value = _audioSource });
                 manager.AddComponentData(_audioEntity, new AudioClipRef { Value = clip });
             }
-
-            _loader.style.display = DisplayStyle.None;
         }
     }
 }

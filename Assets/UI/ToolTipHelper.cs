@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 
 public class ToolTipHelper : MonoBehaviour
 {
-    //
     private VisualElement root;
     private Label label;
 
